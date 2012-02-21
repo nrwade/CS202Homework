@@ -11,8 +11,10 @@ class Circle
 		// declare member variable radius 
 		double radius;
 
-		// declare member variable pi and initialize it to 3.14159
+		// declare member variable pi 
 		// declare it a const as the value will not change
+		// note: C++ does not allow us to initialize this here
+		// we must initialize pi in Circle.cpp
 		const double pi;
 
 	public:
@@ -26,19 +28,15 @@ class Circle
 		void setRadius(double radius);
 
 		// accessor function for the radius variable
-		// takes a double for a user defines radius and returns it
 		double getRadius();
 
 		// function that returns area of the circle
-		// takes doubles for pi and the radius
 		double getArea();
 
 		// function that returns diameter
-		// takes a double for the radius
 		double getDiameter();
 
 		// function that returns circumference
-		// takes doubles for pi and the radius
 		double getCircumference();
 		
 
