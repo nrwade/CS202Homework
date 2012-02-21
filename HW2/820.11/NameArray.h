@@ -9,6 +9,7 @@ class NameArray {
 	public: 
 		NameArray();
 		NameArray(int length);
+		~NameArray();
 
 		void print();
 

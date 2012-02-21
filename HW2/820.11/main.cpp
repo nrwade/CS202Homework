@@ -96,7 +96,7 @@ int main() {
 		}
 	}
 
-	delete [] n;
+	delete n;
 
 	return 0;
 }

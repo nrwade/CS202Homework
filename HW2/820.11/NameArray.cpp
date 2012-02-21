@@ -9,6 +9,10 @@ NameArray::NameArray(int length) {
 	numbers = new float[length];
 }
 
+NameArray::~NameArray() {
+	delete [] numbers;
+}
+
 void NameArray::print() {
 	for (int i=0; i<this->length; i++) {
 		cout << *(numbers + i) << endl;
