@@ -9,5 +9,9 @@ int main() {
 	Month m = Month();	
 
 	cout << m << endl;
+
+	cout << ": ";
+	cin >> m;
+	cout <<  m << endl;
 	return 0;
 }

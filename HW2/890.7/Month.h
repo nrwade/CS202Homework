@@ -18,8 +18,8 @@ public:
 	void setMonth(int num);
 
 	friend ostream& operator<<(ostream& os, const Month& m);		
-	friend istream& operator>>(istream& input, const Month& m)
-	
+	friend istream& operator>>(istream& input, Month& m);
+
 	void operator++();		//pre
 	void operator++(int);	//post
 

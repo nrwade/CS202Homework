@@ -61,8 +61,9 @@ ostream& operator<<(ostream& output, const Month& m) {
 	return output;
 }
 
-istream& operator>>(istream& input, const Month& m) {
+istream& operator>>(istream& input, Month& m) {
 	input >> m.monthNumber;
+	m.setMonth(m.monthNumber);
 	return input;
 }
 
