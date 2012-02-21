@@ -1,7 +1,8 @@
 #include "NameArray.h"
 
 #include <iostream>;
-using namespace std;
+using std::cout;
+using std::endl;
 
 // constructor that create an array of size length
 NameArray::NameArray(int length) {
