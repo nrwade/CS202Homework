@@ -61,6 +61,11 @@ ostream& operator<<(ostream& output, const Month& m) {
 	return output;
 }
 
+istream& operator>>(istream& input, const Month& m) {
+	input >> m.monthNumber;
+	return input;
+}
+
 std::string Month::getName() {
 	return this->name;
 }
