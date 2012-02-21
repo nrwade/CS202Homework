@@ -18,8 +18,8 @@ public:
 	double operator+(NumDays n1);
 	double operator-(NumDays n1);
 
-	void operator++();
-	void operator--();
+	void operator++(int);
+	void operator--(int);
 	
 };
 

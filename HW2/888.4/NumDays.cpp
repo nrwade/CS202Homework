@@ -28,11 +28,11 @@ double NumDays::operator-(NumDays n1) {
 	return this->getHours() - n1.getHours();
 }
 
-void NumDays::operator++() {
+void NumDays::operator++(int) {
 	this->setHours(this->hours + 1);
 }
 
-void NumDays::operator--() {
+void NumDays::operator--(int) {
 	this->setHours(this->hours - 1);
 }
 
