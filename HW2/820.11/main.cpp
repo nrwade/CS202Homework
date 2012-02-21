@@ -3,6 +3,13 @@ using namespace std;
 
 #include "NameArray.h";
 
+// at the bginning of our program, we define the functions
+// that allow us to communicate with the user 
+// assumes user does not know that arrays in C++ start at index 0
+// and adjusts accordingly
+
+// takes a number and an index from the user and updates 
+// the list accoringly
 void addNumberToList(NameArray * n) {
 	float num;
 	int index;
@@ -11,28 +18,40 @@ void addNumberToList(NameArray * n) {
 	cout << "Enter the index to store the number: ";
 	cin >> index;
 
+	// check that the user is entering acceptable values
 	if (index-1 < 0) {
 		cout << "Only postive indices are allowed.\n";
 		return;
 	}
 
+	// change the value in the list using the add funtion
 	n->add(index-1, num);
 }
 
+// gets an index from the user and returns the value in that spot
 void getNumberFromList(NameArray * n) {
 	int index;
 	cout << "Enter the index of the number you want: ";
 	cin >> index;
+
+	//checks that the user is entering positive indices
+	// later we could add something that tells the user if their
+	// indice is too large
 	if (index-1 < 0) {
 		cout << "Only postive indices are allowed.\n";
 		return;
 	}
+
+	// shows the user the value 
 	cout << ">> " << n->get(index-1) << endl;
 } 
 
 int main() {
-	// Grab the length from the user
-	int length=-1;	
+
+	int length=-1;
+	
+	// get list length from user
+	// keep asking for length until user enters a positive value	
 	do {
 		cout << "Type list length: ";
 		cin >> length;
@@ -43,11 +62,14 @@ int main() {
 	} while (length <= 0);
 
 
+	// create an instance of name array called n 
+	// that has the user given length
 	NameArray * n = new NameArray(length);
 
+	// we'll need this for our menu
 	bool quit=false;
 
-
+	// create a menu for the user
 	while (!quit) {
 		int menuOption;
 
@@ -67,9 +89,11 @@ int main() {
 
 		cin >> menuOption;
 
+		// switch statemnts correspond to menu choices and behave
+		// accordingly
 		switch(menuOption) {
 			case 0: 
-				quit=!quit;
+				quit=!quit; //toggles quit so menu stops running
 				break;
 			case 1:
 				n->print();
