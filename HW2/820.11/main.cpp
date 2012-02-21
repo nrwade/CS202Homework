@@ -1,3 +1,8 @@
+/* Nicole Wade
+CS202
+21 Feb 20120
+820.11 */
+
 #include <iostream> 
 using std::cout;
 using std::cin;

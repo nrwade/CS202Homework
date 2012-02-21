@@ -1,3 +1,8 @@
+/* Nicole Wade
+CS 202
+21 Feb 2012
+888.4 */
+
 #include <iostream>
 #include <cmath>
 using std::abs;
