@@ -22,13 +22,24 @@ class Circle
 		Circle(double initializeRad); 
 
 		// mutator function for the radius variable
+		// takes a user defined value of the radius
 		void setRadius(double setRad);
 
 		// accessor function for the radius variable
+		// takes a double for a user defines radius and returns it
 		double getRadius(double getRad);
 
 		// function that returns area of the circle
-		double getArea()
+		// takes doubles for pi and the radius
+		double getArea(double pi, double rad);
+
+		// function that returns diameter
+		// takes a double for the radius
+		double getDiameter(double rad);
+
+		// function that returns circumference
+		// takes doubles for pi and the radius
+		double getCircumference(double pi, double rad);
 
 };
 #endif
