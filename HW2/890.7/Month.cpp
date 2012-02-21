@@ -1,23 +1,35 @@
 #include <iostream>
 #include <string>
-using namespace std;
+using std::ostream;
+using std::istream;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
 
 #include "Month.h"
 
+// default constructor
 Month::Month() {
 	name = "January";
 	monthNumber = 1;
 }
 
+// constructor that sets month name
 Month::Month(string& month) {
 	this->setMonth(month);
 }
 
+// constructor that sets month number
 Month::Month(int num) {
 	this->setMonth(num);
 }
 
+// sets month
 void Month::setMonth(string& month) {
+
+	// sets string to all lowercase in case user types
+	// in month weird
 	for(int i=0; i < month.length(); ++i)
 	{
 		month[i] = tolower(month[i]);
@@ -25,6 +37,7 @@ void Month::setMonth(string& month) {
 
 	name = month;
 
+	// set month number to correspond with month name
 	if ( month == "january" ) monthNumber = 1;
 	if ( month =="february") monthNumber = 2;
 	if ( month == "march")	monthNumber = 3;
@@ -39,6 +52,7 @@ void Month::setMonth(string& month) {
 	if ( month == "december") monthNumber = 12;
 }
 
+// sets month name to correspond with month number
 void Month::setMonth(int num) {
 	monthNumber = num;
 
@@ -56,25 +70,31 @@ void Month::setMonth(int num) {
 	if (num == 12) name = "december";
 }
 
+// when we use << with our class it will output month name and month number
 ostream& operator<<(ostream& output, const Month& m) {
 	output << "Month name: " << m.name << ", Month number: " << m.monthNumber << endl;
 	return output;
 }
 
+// when we use >> with our class it will sett the month number
 istream& operator>>(istream& input, Month& m) {
 	input >> m.monthNumber;
 	m.setMonth(m.monthNumber);
 	return input;
 }
 
-std::string Month::getName() {
+// returns month name
+string Month::getName() {
 	return this->name;
 }
 
+// returns month number
 int Month::getMonthNumber() {
 	return this->monthNumber;
 }
 
+// overloads ++ and sets number to 1 if greater than 12
+// pre
 void Month::operator++() {
 	++monthNumber;
 	if (monthNumber > 12) {
@@ -82,15 +102,19 @@ void Month::operator++() {
 	}
 	this->setMonth(monthNumber);	
 }	
-		
+	
+// overloads ++ and sets number to 1 if greater than 12
+// post		
 void Month::operator++(int) {
 	monthNumber++;
 	if (monthNumber > 12) {
 		monthNumber = 1;
 	}
 	this->setMonth(monthNumber);
-}//post
+}
 
+// overloads -- and set number to 12 if less than 1
+// pre
 void Month::operator--() {
 	--monthNumber;
 	if (monthNumber < 1) {
@@ -99,6 +123,8 @@ void Month::operator--() {
 	this->setMonth(monthNumber);
 }
 
+// overloads -- and set number to 12 if less than 1
+// post
 void Month::operator--(int) {
 	--monthNumber;
 	if (monthNumber < 1) {

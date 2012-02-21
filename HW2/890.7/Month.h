@@ -6,28 +6,48 @@ using std::string;
 
 
 class Month {
-private:
-	std::string name;
-	int monthNumber;
-public:
-	Month();
-	Month(int num);
-	Month(string& month);
 
-	void setMonth(string& month); 
-	void setMonth(int num);
+	private:
 
-	friend ostream& operator<<(ostream& os, const Month& m);		
-	friend istream& operator>>(istream& input, Month& m);
+		std::string name;
+		int monthNumber;
 
-	void operator++();		//pre
-	void operator++(int);	//post
+	public:
 
-	void operator--();
-	void operator--(int);
+		// default constructor
+		Month();
+
+		// constructor that takes number
+		Month(int num);
+
+		//constructor that takes string
+		Month(string& month);
+
+		// setter for month string
+		void setMonth(string& month); 
+
+		// setter for month number
+		void setMonth(int num);
+
+		// overloads << operator
+		friend ostream& operator<<(ostream& os, const Month& m);
 		
-	std::string getName();
-	int getMonthNumber();
+		// overloads >> operator		
+		friend istream& operator>>(istream& input, Month& m);
+
+		// overloads ++ operator
+		void operator++();		//pre
+		void operator++(int);	//post
+
+		// overloads -- operator
+		void operator--();		//pre
+		void operator--(int);	//post
+		
+		//returns month name
+		string getName();
+
+		// returns month number
+		int getMonthNumber();
 };
 
 #endif

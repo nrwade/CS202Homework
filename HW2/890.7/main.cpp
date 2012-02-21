@@ -1,3 +1,9 @@
+/* Nicole Wade
+CS 202 
+21 Feb 2012
+890.7 */
+
+
 #include <iostream> 
 #include <string>
 using namespace std;
