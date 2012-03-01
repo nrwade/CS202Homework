@@ -17,15 +17,48 @@ using std::endl;
 int main(){
 
 Date m = Date();
+Date n = Date();
 
 
-cout << "enter date in form dd/mm/yyyy" << endl;
+cout << "enter date in form mm/dd/yyyy" << endl;
 
 cin >> m;
 
-m.dashedDate();
-m.monthFirst();
+cout << "enter a second date in form mm/dd/yyyy" << endl;
+
+cin >> n;
+
+if (!m.getError()) {
+cout << "dashed date ";
+m.dashedDate(); 
+cout << endl << "month first ";
+m.monthFirst(); 
+cout << endl << "day first ";
+m.dayFirst(); 
+cout << endl;
+}
+
+cout << "add 1 day" << endl;
+++m;
 m.dayFirst();
+cout << endl;
+
+cout << " add another day" << endl;
+m++;
+m.dayFirst(); 
+cout << endl;
+
+cout << "subtract a day" << endl;
+--m;
+m.dayFirst(); 
+cout << endl;
+
+cout << "subtract another day" << endl;
+m--;
+m.dayFirst(); 
+cout << endl;
+
+m-n;
 
 
 

@@ -13,7 +13,9 @@ using std::string;
 
 
 //default constructor
-Date::Date(){}
+Date::Date() {
+	error = false; 
+}
 
 int Date::getDay(){
 	return this-> day;
@@ -27,8 +29,59 @@ int Date::getYear(){
 	return this-> year;
 }
 
-// sets month name to correspond with month number
-string Date::monthAsText() {
+void Date::dashedDate (){
+	cout << month << "/" << day << "/" << year << endl;
+}
+
+void Date::monthFirst (){
+	cout << name << " " << day << ", "
+		<< year << endl;
+} 
+
+void Date::dayFirst (){
+	cout << day << " " << name << " "
+		<< year << endl;
+}
+
+void Date::operator++(){
+
+	++day;
+
+	if (month == 12 && day > 31)
+	{
+		month = 1;
+		day = 1;
+		year += 1;
+	}
+
+	else if (month == 1 || month == 3 || month == 5 || month == 7
+	|| month == 8 || month == 10)
+	{
+		if (day > 31)
+		{
+			day = 1;
+			month += 1;
+		}
+	}
+
+	else if (month == 4 || month == 6 || month == 11)
+	{
+		if (day > 30)
+		{
+			day = 1;
+			month += 1;
+		}
+	}
+
+	else
+	{
+		if (day > 28) //leap years not considered
+		{
+			day = 1;
+			month += 1; 
+		}
+	}
+
 
 	if (month == 1) name = "January"; 
 	if  (month == 2) name = "February";
@@ -36,77 +89,24 @@ string Date::monthAsText() {
 	if  (month == 4) name = "April";
 	if (month == 5)	name = "May";					
 	if  (month == 6) name = "June";
-	if  (month == 7)	 name = "July";
+	if  (month == 7) name = "July";
 	if  (month == 8) name = "August";
 	if (month == 9) name = "September"; 
 	if  (month == 10) name = "October";
 	if  (month == 11) name = "November";
 	if (month == 12) name = "December";
 
-	return this->name; //have to return a pointer as a string is a pointer?
 }
 
-void Date::dashedDate (){
-	cout << month << "/" << day << "/" << year << endl;
-}
+void Date::operator++(int){
 
-void Date::monthFirst (){
-	cout << monthAsText() << " " << day << ", "
-		<< year << endl;
-} 
-
-void Date::dayFirst (){
-	cout << day << " " << monthAsText() << " "
-		<< year << endl;
-}
-
-void Date::operator++(){
-	++day;
-
-	if (month == 12 && day > 31)
-	{
-		month = 1;
-		day = 1;
-		year += year;
-	}
-
-	else if (month == 1 || month == 3 || month == 5 || month == 7
-	|| month == 8 || month == 10)
-	{
-		if (day > 31)
-		{
-			day = 1;
-			month += month;
-		}
-	}
-
-	else if (month == 4 || month == 6 || month == 11)
-	{
-		if (day > 30)
-		{
-			day = 1;
-			month += 1;
-		}
-	}
-
-	else
-	{
-		if (day > 28) //leap years not considered
-		{
-			day = 1;
-			month += month; 
-		}
-	}
-
-}
-
-void Date::operator++(int day){
 	day++;
+
 	if (month == 12 && day > 31)
 	{
 		month = 1;
 		day = 1;
-		year += year;
+		year += 1;
 	}
 
 	else if (month == 1 || month == 3 || month == 5 || month == 7
@@ -115,7 +115,7 @@ void Date::operator++(int day){
 		if (day > 31)
 		{
 			day = 1;
-			month += month;
+			month += 1;
 		}
 	}
 
@@ -133,9 +133,22 @@ void Date::operator++(int day){
 		if (day > 28) //leap years not considered
 		{
 			day = 1;
-			month += month; 
+			month += 1; 
 		}
 	}
+
+	if (month == 1) name = "January"; 
+	if  (month == 2) name = "February";
+	if 	(month == 3) name = "March";
+	if  (month == 4) name = "April";
+	if (month == 5)	name = "May";					
+	if  (month == 6) name = "June";
+	if  (month == 7) name = "July";
+	if  (month == 8) name = "August";
+	if (month == 9) name = "September"; 
+	if  (month == 10) name = "October";
+	if  (month == 11) name = "November";
+	if (month == 12) name = "December";
 }
 
 void Date::operator--(){
@@ -145,7 +158,7 @@ void Date::operator--(){
 	{
 		day = 31;
 		month = 12;
-		year -= year;
+		year -= 1;
 	}
 
 	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
@@ -175,23 +188,36 @@ void Date::operator--(){
 		}
 	}
 
+	if (month == 1) name = "January"; 
+	if  (month == 2) name = "February";
+	if 	(month == 3) name = "March";
+	if  (month == 4) name = "April";
+	if (month == 5)	name = "May";					
+	if  (month == 6) name = "June";
+	if  (month == 7) name = "July";
+	if  (month == 8) name = "August";
+	if (month == 9) name = "September"; 
+	if  (month == 10) name = "October";
+	if  (month == 11) name = "November";
+	if (month == 12) name = "December";
+
 	}
 
-	void Date::operator--(int day){
+	void Date::operator--(int){
 	day--;
 
 		if (month == 1 && day < 1)
 	{
 		day = 31;
 		month = 12;
-		year -= year;
+		year -= 1;
 	}
 
 		if (month == 1 && day < 1)
 	{
 		day = 31;
 		month = 12;
-		year -= year;
+		year -= 1;
 	}
 
 	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
@@ -220,6 +246,19 @@ void Date::operator--(){
 			month -= 1;
 		}
 	}
+
+	if (month == 1) name = "January"; 
+	if  (month == 2) name = "February";
+	if 	(month == 3) name = "March";
+	if  (month == 4) name = "April";
+	if (month == 5)	name = "May";					
+	if  (month == 6) name = "June";
+	if  (month == 7) name = "July";
+	if  (month == 8) name = "August";
+	if (month == 9) name = "September"; 
+	if  (month == 10) name = "October";
+	if  (month == 11) name = "November";
+	if (month == 12) name = "December";
 }
 
 //date2 is the right side of the operator
@@ -270,15 +309,15 @@ void Date::operator-(Date date2){
 	}
 
 
-	cout << "The between date 1 and date 2 is " << totalDifference << endl;
+	cout << "The difference between date 1 and date 2 is " << totalDifference << endl;
 }
 
 
-ostream& operator << (ostream& output, const Date& m) {
-	output << m.monthAsText() << " " << m.day << ", "
+ostream& operator<<(ostream& output, const Date& m) {
+	output << m.name << " " << m.day << ", "
 			<< m.year << endl;
+	return output;
 }
-
 
 // user input is of the form mm/dd/yyyy
 istream& operator >> (istream& input, Date& m) {
@@ -298,7 +337,7 @@ istream& operator >> (istream& input, Date& m) {
 	if (day > 31 || day<1)
 	{
 		cout<< "Months have between 1 and 31 days." << endl;
-	//------how do I break out here--------
+		m.error = true;
 	}
 
 	else
@@ -306,23 +345,41 @@ istream& operator >> (istream& input, Date& m) {
 		m.day = day;
 	}
 
-	string monthString = dateText.substr(3,2);
+	string monthString = dateText.substr(0,2);
 
 	month = atoi(monthString.c_str());
 
 	if (month > 12 || month < 1)
 	{
-		cout<< "There are between 1 and 12 months.";
-	//------how do I break out here--------
+		cout<< "There are between 1 and 12 months." << endl;
+		m.error = true;
 	}
 	else
 	{
-		m.day = day;
+		m.month = month;
 	}
 
 	string yearString= dateText.substr(6,4);
 	
 	m.year = atoi(yearString.c_str());
 
+	if (m.month == 1) m.name = "January"; 
+	if  (m.month == 2) m.name = "February";
+	if 	(m.month == 3) m.name = "March";
+	if  (m.month == 4) m.name = "April";
+	if (m.month == 5)	m.name = "May";					
+	if  (m.month == 6) m.name = "June";
+	if  (m.month == 7) m.name = "July";
+	if  (m.month == 8) m.name = "August";
+	if (m.month == 9) m.name = "September"; 
+	if  (m.month == 10) m.name = "October";
+	if  (m.month == 11) m.name = "November";
+	if (m.month == 12) m.name = "December";
+
 	return input;
+}
+
+
+bool Date::getError() {
+	return this->error;
 }
