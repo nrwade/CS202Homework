@@ -1,6 +1,7 @@
 #include <cstdlib> //for abs
 #include "FeetInches.h"
 
+// simplifies the number of feet and inches
 void FeetInches::simplify() 
 {
 	if (inches >= 12)
@@ -16,11 +17,13 @@ void FeetInches::simplify()
 	}
 }
 
+	// overloaded <= operator compares lengths
 	bool FeetInches::operator <= (const FeetInches &right)
 	{
 		
 		bool marker;
 
+		// set marker value
 		if (! (feet > right.feet))
 		{
 			marker = true;
@@ -39,11 +42,13 @@ void FeetInches::simplify()
 
 	}
 
+	// overloaded >= operator compares lengths
 	bool FeetInches::operator >= (const FeetInches &right)
 	{
 
 		bool marker;
 
+		//set marker value
 		if (!(feet < right.feet))
 		{
 			marker = true;
@@ -63,10 +68,12 @@ void FeetInches::simplify()
 
 	}
 
+	// overloaded != operator compares lengths
 	bool FeetInches::operator != (const FeetInches &right)
 	{
 		bool marker;
 
+		//set marker
 		if (!(feet == right.feet && inches == right.inches))
 		{
 			marker = true;

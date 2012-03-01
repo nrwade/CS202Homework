@@ -23,23 +23,36 @@ public:
 		simplify();
 	}	
 
+	//copy constructor
+	FeetInches(const FeetInches &newLength)
+	{
+		feet = newLength.feet;
+		inches = newLength.inches;
+		simplify();
+	}
+
+	//setter for feet
 	void setFeet (int f){
 		feet = f;
 	}
 
+	//setter for inches
 	void setInches (int i){
 		inches = i;
 		simplify();
 	}
 
+	//getter for feet
 	int getFeet() const{
 		return feet;
 	}
 
+	//getter for inches
 	int getInches() const{
 		return inches;
 	}
 
+	//overloaded operators
 	bool operator <= (const FeetInches &);
 	bool operator >= (const FeetInches &);
 	bool operator != (const FeetInches &);
