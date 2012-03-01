@@ -3,11 +3,12 @@
 #define DATE_H
 
 #include <iostream>
-#include "Month.h"
+#include <string>
 using std::istream;
 using std::ostream;
 using std::cin;
 using std::cout;
+using std::string;
 
 class Date {
 
@@ -15,13 +16,11 @@ private:
 	int month;
 	int day;
 	int year;
-	Month monthText; //create an instance of the class Month
+	string name; //month name in text
+	//Month monthText; //create an instance of the class Month
 
 public:
 	Date(); //constructor
-
-	// assign the month
-	monthText.setMonth(month);
 
 	//getter functions
 	//we have no setter functions as the overloaded >> operator does this
@@ -30,6 +29,8 @@ public:
 	int getMonth();
 
 	int getYear();
+
+	string monthAsText();
 
 	void dashedDate ();
 
@@ -40,10 +41,10 @@ public:
 	void operator++(); //pre
 	void operator++(int day); //post
 
-	void operator++(); //pre
+	void operator--(); //pre
 	void operator--(int day); //post
 
-	void operator-(Date date1, Date date2); 
+	void operator-(Date date2); 
 
 	friend ostream& operator<<(ostream& output, const Date& m); 
 

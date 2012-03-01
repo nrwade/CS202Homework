@@ -27,22 +27,40 @@ int Date::getYear(){
 	return this-> year;
 }
 
+// sets month name to correspond with month number
+string Date::monthAsText() {
+
+	if (month == 1) name = "January"; 
+	if  (month == 2) name = "February";
+	if 	(month == 3) name = "March";
+	if  (month == 4) name = "April";
+	if (month == 5)	name = "May";					
+	if  (month == 6) name = "June";
+	if  (month == 7)	 name = "July";
+	if  (month == 8) name = "August";
+	if (month == 9) name = "September"; 
+	if  (month == 10) name = "October";
+	if  (month == 11) name = "November";
+	if (month == 12) name = "December";
+
+	return this->name; //have to return a pointer as a string is a pointer?
+}
 
 void Date::dashedDate (){
 	cout << month << "/" << day << "/" << year << endl;
 }
 
 void Date::monthFirst (){
-	cout << monthText.getName() << " " << day << ", "
+	cout << monthAsText() << " " << day << ", "
 		<< year << endl;
 } 
 
 void Date::dayFirst (){
-	cout << day << " " << monthText.getName() << " "
+	cout << day << " " << monthAsText() << " "
 		<< year << endl;
 }
 
-void Date::operator++(int day){
+void Date::operator++(){
 	++day;
 
 	if (month == 12 && day > 31)
@@ -120,7 +138,7 @@ void Date::operator++(int day){
 	}
 }
 
-void Date::operator--(int day){
+void Date::operator--(){
 	--day;
 
 	if (month == 1 && day < 1)
@@ -204,8 +222,8 @@ void Date::operator--(int day){
 	}
 }
 
-
-void Date::operator-(Date date1, Date date2){
+//date2 is the right side of the operator
+void Date::operator-(Date date2){
 	// first we calculate the number of the of the year it is
 	// we do this by storing the number of days of the months in an array
 	int numberDays[12];
@@ -216,12 +234,12 @@ void Date::operator-(Date date1, Date date2){
 
 	int totalDays1=0;
 
-	for (int i=0; i < date1.month - 1; i++)
+	for (int i=0; i <month - 1; i++)
 	{
 		totalDays1 += numberDays[i];
 	}
 
-	totalDays1+= date1.day;
+	totalDays1 += day;
 	
 	int totalDays2=0;
 
@@ -234,21 +252,21 @@ void Date::operator-(Date date1, Date date2){
 
 	int totalDifference = 0;
 
-	if (date1.year == date2.year)
+	if (year == date2.year)
 	{
 		totalDifference = totalDays1 - totalDays2;
 	}
 
-	else if (date1.year < date2.year)
+	else if (year < date2.year)
 	{
 		totalDifference = (365 - totalDays1) + totalDays2 +
-			(((date1.year - date2.year) - 1) * 365);
+			(((year - date2.year) - 1) * 365);
 	}
 
 	else
 	{
 			totalDifference = (365 - totalDays2) + totalDays1 +
-			(((date2.year - date1.year) - 1) * 365);	
+			(((date2.year - year) - 1) * 365);	
 	}
 
 
@@ -257,7 +275,7 @@ void Date::operator-(Date date1, Date date2){
 
 
 ostream& operator << (ostream& output, const Date& m) {
-	output << monthText.getName() << " " << m.day << ", "
+	output << m.monthAsText() << " " << m.day << ", "
 			<< m.year << endl;
 }
 
@@ -275,14 +293,14 @@ istream& operator >> (istream& input, Date& m) {
 
 	string dayString= dateText.substr(3,2);
 
-	day = atoi(dayString.c_str())
+	day = atoi(dayString.c_str());
 
 	if (day > 31 || day<1)
 	{
 		cout<< "Months have between 1 and 31 days." << endl;
 	//------how do I break out here--------
 	}
-	
+
 	else
 	{
 		m.day = day;
@@ -290,11 +308,11 @@ istream& operator >> (istream& input, Date& m) {
 
 	string monthString = dateText.substr(3,2);
 
-	month = atoi(monthString.c_str())
+	month = atoi(monthString.c_str());
 
 	if (month > 12 || month < 1)
 	{
-		cout<< "There are between 1 and 12 months."
+		cout<< "There are between 1 and 12 months.";
 	//------how do I break out here--------
 	}
 	else
