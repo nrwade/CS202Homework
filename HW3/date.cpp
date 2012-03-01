@@ -13,252 +13,295 @@ using std::string;
 
 
 //default constructor
+// sets error to false
 Date::Date() {
-	error = false; 
+	_error = false; 
 }
 
+// returns day
 int Date::getDay(){
-	return this-> day;
+	return this-> _day;
 }
 
+//returns month
 int Date::getMonth(){
-	return this-> month;
+	return this-> _month;
 }
 
+
+//returns year
 int Date::getYear(){
-	return this-> year;
+	return this-> _year;
 }
 
+// displays the date in the form mm/dd/yyyy
 void Date::dashedDate (){
-	cout << month << "/" << day << "/" << year << endl;
+	cout << _month << "/" << _day << "/" << _year << endl;
 }
 
+// displays the date as month dd, yyyy
 void Date::monthFirst (){
-	cout << name << " " << day << ", "
-		<< year << endl;
+	cout << _name << " " << _day << ", "
+		<< _year << endl;
 } 
 
+// displays the date as dd month yyyy
 void Date::dayFirst (){
-	cout << day << " " << name << " "
-		<< year << endl;
+	cout << _day << " " << _name << " "
+		<< _year << endl;
 }
 
+//overloads the ++ operator
+// pre
 void Date::operator++(){
 
-	++day;
+	++_day;
 
-	if (month == 12 && day > 31)
+	// sets date to the new year if a day is added to Dec 31
+	if (_month == 12 && _day > 31)
 	{
-		month = 1;
-		day = 1;
-		year += 1;
+		_month = 1;
+		_day = 1;
+		_year += 1;
 	}
 
-	else if (month == 1 || month == 3 || month == 5 || month == 7
-	|| month == 8 || month == 10)
+	// if a month with 31 days gets a day added to it, start
+	// the new month
+	else if (_month == 1 || _month == 3 || _month == 5 || _month == 7
+	|| _month == 8 || _month == 10)
 	{
-		if (day > 31)
+		if (_day > 31)
 		{
-			day = 1;
-			month += 1;
+			_day = 1;
+			_month += 1;
 		}
 	}
 
-	else if (month == 4 || month == 6 || month == 11)
+	// if a month with 30 days gets a day added to it, start
+	// the new month
+	else if (_month == 4 || _month == 6 || _month == 11)
 	{
-		if (day > 30)
+		if (_day > 30)
 		{
-			day = 1;
-			month += 1;
+			_day = 1;
+			_month += 1;
 		}
 	}
 
+	// if the last day of the second month has a day added to it
+	// the next month starts
 	else
 	{
-		if (day > 28) //leap years not considered
+		if (_day > 28) //leap years considered
 		{
-			day = 1;
-			month += 1; 
+			_day = 1;
+			_month += 1; 
 		}
 	}
 
 
-	if (month == 1) name = "January"; 
-	if  (month == 2) name = "February";
-	if 	(month == 3) name = "March";
-	if  (month == 4) name = "April";
-	if (month == 5)	name = "May";					
-	if  (month == 6) name = "June";
-	if  (month == 7) name = "July";
-	if  (month == 8) name = "August";
-	if (month == 9) name = "September"; 
-	if  (month == 10) name = "October";
-	if  (month == 11) name = "November";
-	if (month == 12) name = "December";
+	// changes the number of the month to the
+	// written _name
+	// come back and make function to do this if time
+	if (_month == 1) _name = "January"; 
+	if  (_month == 2) _name = "February";
+	if 	(_month == 3) _name = "March";
+	if  (_month == 4) _name = "April";
+	if (_month == 5)	_name = "May";					
+	if  (_month == 6) _name = "June";
+	if  (_month == 7) _name = "July";
+	if  (_month == 8) _name = "August";
+	if (_month == 9) _name = "September"; 
+	if  (_month == 10) _name = "October";
+	if  (_month == 11) _name = "November";
+	if (_month == 12) _name = "December";
 
 }
 
+// overloads ++ operator 
+// post	
 void Date::operator++(int){
 
-	day++;
+	_day++;
 
-	if (month == 12 && day > 31)
+	//if a day is added to dec 31, start new year
+	if (_month == 12 && _day > 31)
 	{
-		month = 1;
-		day = 1;
-		year += 1;
+		_month = 1;
+		_day = 1;
+		_year += 1;
 	}
 
-	else if (month == 1 || month == 3 || month == 5 || month == 7
-	|| month == 8 || month == 10)
+	// if a day is added to the last day of a month,
+	// start new month
+	else if (_month == 1 || _month == 3 || _month == 5 || _month == 7
+	|| _month == 8 || _month == 10)
 	{
-		if (day > 31)
+		if (_day > 31)
 		{
-			day = 1;
-			month += 1;
+			_day = 1;
+			_month += 1;
 		}
 	}
 
-	else if (month == 4 || month == 6 || month == 11)
+	else if (_month == 4 || _month == 6 || _month == 11)
 	{
-		if (day > 30)
+		if (_day > 30)
 		{
-			day = 1;
-			month += 1;
+			_day = 1;
+			_month += 1;
 		}
 	}
 
 	else
 	{
-		if (day > 28) //leap years not considered
+		if (_day > 28) //leap years not considered
 		{
-			day = 1;
-			month += 1; 
+			_day = 1;
+			_month += 1; 
 		}
 	}
 
-	if (month == 1) name = "January"; 
-	if  (month == 2) name = "February";
-	if 	(month == 3) name = "March";
-	if  (month == 4) name = "April";
-	if (month == 5)	name = "May";					
-	if  (month == 6) name = "June";
-	if  (month == 7) name = "July";
-	if  (month == 8) name = "August";
-	if (month == 9) name = "September"; 
-	if  (month == 10) name = "October";
-	if  (month == 11) name = "November";
-	if (month == 12) name = "December";
+	//take number of month and set name of month
+	if (_month == 1) _name = "January"; 
+	if  (_month == 2) _name = "February";
+	if 	(_month == 3) _name = "March";
+	if  (_month == 4) _name = "April";
+	if (_month == 5) _name = "May";					
+	if  (_month == 6) _name = "June";
+	if  (_month == 7) _name = "July";
+	if  (_month == 8) _name = "August";
+	if (_month == 9) _name = "September"; 
+	if  (_month == 10) _name = "October";
+	if  (_month == 11) _name = "November";
+	if (_month == 12) _name = "December";
 }
 
+// overload -- operator
+// pre
 void Date::operator--(){
-	--day;
+	--_day;
 
-	if (month == 1 && day < 1)
+	// if a day is subtracted from the first day of the year,
+	// go to previous year
+	if (_month == 1 && _day < 1)
 	{
-		day = 31;
-		month = 12;
-		year -= 1;
+		_day = 31;
+		_month = 12;
+		_year -= 1;
 	}
 
-	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
+	// if a day is subtracted from the first day of the month,
+	// go to previous month
+	else if (_month == 2 || _month == 4 || _month == 6 || 
+			_month == 9 || _month == 11)
 	{
-		if (day <1)
+		if (_day <1)
 		{
-			day = 31;
-			month -= 1; 
+			_day = 31;
+			_month -= 1; 
 		}
 	}
 
-	else if (month == 3)
+	else if (_month == 3)
 	{
-		if (day < 1)
+		if (_day < 1)
 		{
-			day = 29;
-			month = 2;
+			_day = 29;
+			_month = 2;
 		}
 	}
 
 	else
 	{
-		if (day < 1)
+		if (_day < 1)
 		{
-			day = 30;
-			month -= 1;
+			_day = 30;
+			_month -= 1;
 		}
 	}
 
-	if (month == 1) name = "January"; 
-	if  (month == 2) name = "February";
-	if 	(month == 3) name = "March";
-	if  (month == 4) name = "April";
-	if (month == 5)	name = "May";					
-	if  (month == 6) name = "June";
-	if  (month == 7) name = "July";
-	if  (month == 8) name = "August";
-	if (month == 9) name = "September"; 
-	if  (month == 10) name = "October";
-	if  (month == 11) name = "November";
-	if (month == 12) name = "December";
+	// should have made a function to do this
+	// set month name from month number
+	if (_month == 1) _name = "January"; 
+	if  (_month == 2) _name = "February";
+	if 	(_month == 3) _name = "March";
+	if  (_month == 4) _name = "April";
+	if (_month == 5)	_name = "May";					
+	if  (_month == 6) _name = "June";
+	if  (_month == 7) _name = "July";
+	if  (_month == 8) _name = "August";
+	if (_month == 9) _name = "September"; 
+	if  (_month == 10) _name = "October";
+	if  (_month == 11) _name = "November";
+	if (_month == 12) _name = "December";
 
 	}
 
+	//overload -- operator
+	//post
 	void Date::operator--(int){
-	day--;
+	_day--;
 
-		if (month == 1 && day < 1)
+	//if subtracting day from first day of january,
+	// return to previous year
+	if (_month == 1 && _day < 1)
 	{
-		day = 31;
-		month = 12;
-		year -= 1;
+		_day = 31;
+		_month = 12;
+		_year -= 1;
 	}
 
-		if (month == 1 && day < 1)
+	// if subtracting day from the first of month
+	// return to previous month 
+	if (_month == 1 && _day < 1)
 	{
-		day = 31;
-		month = 12;
-		year -= 1;
+		_day = 31;
+		_month = 12;
+		_year -= 1;
 	}
 
-	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
+	else if (_month == 2 || _month == 4 || _month == 6 || 
+			_month == 9 || _month == 11)
 	{
-		if (day <1)
+		if (_day <1)
 		{
-			day = 31;
-			month -= 1; 
+			_day = 31;
+			_month -= 1; 
 		}
 	}
 
-	else if (month == 3)
+	else if (_month == 3)
 	{
-		if (day < 1)
+		if (_day < 1)
 		{
-			day = 29;
-			month = 2;
+			_day = 29;
+			_month = 2;
 		}
 	}
 
 	else
 	{
-		if (day < 1)
+		if (_day < 1)
 		{
-			day = 30;
-			month -= 1;
+			_day = 30;
+			_month -= 1;
 		}
 	}
 
-	if (month == 1) name = "January"; 
-	if  (month == 2) name = "February";
-	if 	(month == 3) name = "March";
-	if  (month == 4) name = "April";
-	if (month == 5)	name = "May";					
-	if  (month == 6) name = "June";
-	if  (month == 7) name = "July";
-	if  (month == 8) name = "August";
-	if (month == 9) name = "September"; 
-	if  (month == 10) name = "October";
-	if  (month == 11) name = "November";
-	if (month == 12) name = "December";
+	// this code...again
+	if (_month == 1) _name = "January"; 
+	if  (_month == 2) _name = "February";
+	if 	(_month == 3) _name = "March";
+	if  (_month == 4) _name = "April";
+	if (_month == 5)	_name = "May";					
+	if  (_month == 6) _name = "June";
+	if  (_month == 7) _name = "July";
+	if  (_month == 8) _name = "August";
+	if (_month == 9) _name = "September"; 
+	if  (_month == 10) _name = "October";
+	if  (_month == 11) _name = "November";
+	if (_month == 12) _name = "December";
 }
 
 //date2 is the right side of the operator
@@ -273,52 +316,64 @@ void Date::operator-(Date date2){
 
 	int totalDays1=0;
 
-	for (int i=0; i <month - 1; i++)
+	// first count the number of days in the given amount of full months
+	// ex. if given March 3, we have 2 full months
+	for (int i=0; i <_month - 1; i++)
 	{
 		totalDays1 += numberDays[i];
 	}
 
-	totalDays1 += day;
+	// add the number of days to the number of days in months
+	// ex. if given march 3, we add 3
+	totalDays1 += _day;
 	
+	//repeat same process for date 2
 	int totalDays2=0;
 
-	for (int i=0; i < date2.month - 1; i++)
+	for (int i=0; i < date2._month - 1; i++)
 	{
 		totalDays2 += numberDays[i];
 	}
 
-	totalDays2+= date2.day;
+	totalDays2+= date2._day;
 
+	// now we need the total difference
 	int totalDifference = 0;
 
-	if (year == date2.year)
+	if (_year == date2._year)
 	{
 		totalDifference = totalDays1 - totalDays2;
 	}
 
-	else if (year < date2.year)
+	// we must decide which year is larger to decide how to 
+	// do the subtraction
+	else if (_year < date2._year)
 	{
 		totalDifference = (365 - totalDays1) + totalDays2 +
-			(((year - date2.year) - 1) * 365);
+			(((_year - date2._year) - 1) * 365);
 	}
 
 	else
 	{
 			totalDifference = (365 - totalDays2) + totalDays1 +
-			(((date2.year - year) - 1) * 365);	
+			(((date2._year - _year) - 1) * 365);	
 	}
 
 
-	cout << "The difference between date 1 and date 2 is " << totalDifference << endl;
+	cout << "The difference between date 1 and date 2 is " 
+		<< totalDifference << endl;
 }
 
-
+// overloaded ostream operator
+// displays month dd, yyyy
 ostream& operator<<(ostream& output, const Date& m) {
-	output << m.name << " " << m.day << ", "
-			<< m.year << endl;
+	output << m._name << " " << m._day << ", "
+			<< m._year << endl;
 	return output;
 }
 
+// overloaded istream operator
+// sets _day, _month, _year
 // user input is of the form mm/dd/yyyy
 istream& operator >> (istream& input, Date& m) {
 
@@ -330,56 +385,66 @@ istream& operator >> (istream& input, Date& m) {
 
 	input >> dateText;
 
+	//isolate the part of the string representing the day
 	string dayString= dateText.substr(3,2);
 
+	//get integer to represent the day
 	day = atoi(dayString.c_str());
 
+	//error testing for proper number of days
 	if (day > 31 || day<1)
 	{
 		cout<< "Months have between 1 and 31 days." << endl;
-		m.error = true;
+		m._error = true;
 	}
 
 	else
 	{
-		m.day = day;
+		m._day = day;
 	}
 
+	//isolate the part of the string representing the month
 	string monthString = dateText.substr(0,2);
 
+	// get integer to represent month
 	month = atoi(monthString.c_str());
 
+	//error testing for month
 	if (month > 12 || month < 1)
 	{
 		cout<< "There are between 1 and 12 months." << endl;
-		m.error = true;
+		m._error = true;
 	}
 	else
 	{
-		m.month = month;
+		m._month = month;
 	}
 
+	//isolate the part of the string representing the year
 	string yearString= dateText.substr(6,4);
 	
-	m.year = atoi(yearString.c_str());
+	//set _year to corresponding integer
+	m._year = atoi(yearString.c_str());
 
-	if (m.month == 1) m.name = "January"; 
-	if  (m.month == 2) m.name = "February";
-	if 	(m.month == 3) m.name = "March";
-	if  (m.month == 4) m.name = "April";
-	if (m.month == 5)	m.name = "May";					
-	if  (m.month == 6) m.name = "June";
-	if  (m.month == 7) m.name = "July";
-	if  (m.month == 8) m.name = "August";
-	if (m.month == 9) m.name = "September"; 
-	if  (m.month == 10) m.name = "October";
-	if  (m.month == 11) m.name = "November";
-	if (m.month == 12) m.name = "December";
+	// more of this
+	if (m._month == 1) m._name = "January"; 
+	if  (m._month == 2) m._name = "February";
+	if 	(m._month == 3) m._name = "March";
+	if  (m._month == 4) m._name = "April";
+	if (m._month == 5)	m._name = "May";					
+	if  (m._month == 6) m._name = "June";
+	if  (m._month == 7) m._name = "July";
+	if  (m._month == 8) m._name = "August";
+	if (m._month == 9) m._name = "September"; 
+	if  (m._month == 10) m._name = "October";
+	if  (m._month == 11) m._name = "November";
+	if (m._month == 12) m._name = "December";
 
 	return input;
 }
 
-
+// returns error value to determine if code should 
+// continue to run 
 bool Date::getError() {
-	return this->error;
+	return this->_error;
 }

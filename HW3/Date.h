@@ -13,12 +13,11 @@ using std::string;
 class Date {
 
 private:
-	int month;
-	int day;
-	int year;
-	string name; //month name in text
-	bool error;
-	//Month monthText; //create an instance of the class Month
+	int _month;
+	int _day;
+	int _year;
+	string _name; //month name in text
+	bool _error; //for error checking
 
 public:
 	Date(); //constructor
@@ -37,6 +36,7 @@ public:
 
 	void dayFirst (); 
 
+	//overloading operators
 	void operator++(); //pre
 	void operator++(int day); //post
 
