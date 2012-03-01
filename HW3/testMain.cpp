@@ -10,6 +10,9 @@ int main(){
 	numberDays[3] = numberDays[5] = numberDays[8] = numberDays[10] = 30;
 
 	int totalDays1=0;
+	int month1;
+	int month2;
+	int 
 
 	for (int i=0; i < date1.month; i++)
 	{

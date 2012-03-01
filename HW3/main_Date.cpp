@@ -24,6 +24,10 @@ cout << "enter date in form dd/mm/yyyy" << endl;
 cin >> m;
 
 m.dashedDate;
+m.monthFirst;
+m.dayFirst;
+
+
 
 return 0;
 }

@@ -3,7 +3,6 @@
 #include <string>
 
 #include "Date.h"
-#include "Month.h"
 
 using std::ostream;
 using std::istream;
@@ -30,7 +29,17 @@ int Date::getYear(){
 
 
 void Date::dashedDate (){
-	cout << month << "/" << day << year << endl;
+	cout << month << "/" << day << "/" << year << endl;
+}
+
+void Date::monthFirst (){
+	cout << monthText.getName() << " " << day << ", "
+		<< year << endl;
+} 
+
+void Date::dayFirst (){
+	cout << day << " " << monthText.getName() << " "
+		<< year << endl;
 }
 
 void Date::operator++(int day){
@@ -152,7 +161,7 @@ void Date::operator--(int day){
 
 	void Date::operator--(int day){
 	day--;
-	
+
 		if (month == 1 && day < 1)
 	{
 		day = 31;
@@ -196,7 +205,7 @@ void Date::operator--(int day){
 }
 
 
-void operator-(Date date1, Date date2){
+void Date::operator-(Date date1, Date date2){
 	// first we calculate the number of the of the year it is
 	// we do this by storing the number of days of the months in an array
 	int numberDays[12];
@@ -223,6 +232,8 @@ void operator-(Date date1, Date date2){
 
 	totalDays2+= date2.day;
 
+	int totalDifference = 0;
+
 	if (date1.year == date2.year)
 	{
 		totalDifference = totalDays1 - totalDays2;
@@ -242,22 +253,17 @@ void operator-(Date date1, Date date2){
 
 
 	cout << "The between date 1 and date 2 is " << totalDifference << endl;
-
-} 
-
-
 }
 
 
-//---------so do I have to make an instance of month within this class??
-/*
-ostream& operator<<(ostream& output, Date& m) {
-	output<<
+ostream& operator << (ostream& output, const Date& m) {
+	output << monthText.getName() << " " << m.day << ", "
+			<< m.year << endl;
 }
-*/
+
 
 // user input is of the form mm/dd/yyyy
-istream& operator>>(istream& input, Date& m) {
+istream& operator >> (istream& input, Date& m) {
 
 	int day;
 	int month;
@@ -276,12 +282,13 @@ istream& operator>>(istream& input, Date& m) {
 		cout<< "Months have between 1 and 31 days." << endl;
 	//------how do I break out here--------
 	}
+	
 	else
 	{
 		m.day = day;
 	}
 
-	string monthString= dateText.substr(3,2);
+	string monthString = dateText.substr(3,2);
 
 	month = atoi(monthString.c_str())
 
