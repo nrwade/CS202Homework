@@ -113,6 +113,7 @@ void Date::operator++(int day){
 
 void Date::operator--(int day){
 	--day;
+
 	if (month == 1 && day < 1)
 	{
 		day = 31;
@@ -120,45 +121,131 @@ void Date::operator--(int day){
 		year -= year;
 	}
 
-	/* else if (month == 1 || month == 3 || month == 5 || month == 7
-	|| month == 8 || month == 10)
+	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
 	{
-		if (day > 31)
+		if (day <1)
 		{
-			day = 1;
-			month += month;
+			day = 31;
+			month -= 1; 
 		}
 	}
 
-	else if (month == 4 || month == 6 || month == 11)
+	else if (month == 3)
 	{
-		if (day > 30)
+		if (day < 1)
 		{
-			day = 1;
-			month += 1;
+			day = 29;
+			month = 2;
 		}
 	}
 
 	else
 	{
-		if (day > 28) //leap years not considered
+		if (day < 1)
 		{
-			day = 1;
-			month += month; 
+			day = 30;
+			month -= 1;
 		}
 	}
-	*/
 
-}
+	}
 
-void Date::operator--(int day){
+	void Date::operator--(int day){
 	day--;
+	
 		if (month == 1 && day < 1)
 	{
 		day = 31;
 		month = 12;
 		year -= year;
 	}
+
+		if (month == 1 && day < 1)
+	{
+		day = 31;
+		month = 12;
+		year -= year;
+	}
+
+	else if (month == 2 || month == 4 || month == 6 || month == 9 || month == 11)
+	{
+		if (day <1)
+		{
+			day = 31;
+			month -= 1; 
+		}
+	}
+
+	else if (month == 3)
+	{
+		if (day < 1)
+		{
+			day = 29;
+			month = 2;
+		}
+	}
+
+	else
+	{
+		if (day < 1)
+		{
+			day = 30;
+			month -= 1;
+		}
+	}
+}
+
+
+void operator-(Date date1, Date date2){
+	// first we calculate the number of the of the year it is
+	// we do this by storing the number of days of the months in an array
+	int numberDays[12];
+	numberDays[0] = numberDays[2] = numberDays[4] = numberDays[6] = 31;
+	numberDays[7] = numberDays[9]= numberDays[11] = 31;
+	numberDays[1] = 29;
+	numberDays[3] = numberDays[5] = numberDays[8] = numberDays[10] = 30;
+
+	int totalDays1=0;
+
+	for (int i=0; i < date1.month - 1; i++)
+	{
+		totalDays1 += numberDays[i];
+	}
+
+	totalDays1+= date1.day;
+	
+	int totalDays2=0;
+
+	for (int i=0; i < date2.month - 1; i++)
+	{
+		totalDays2 += numberDays[i];
+	}
+
+	totalDays2+= date2.day;
+
+	if (date1.year == date2.year)
+	{
+		totalDifference = totalDays1 - totalDays2;
+	}
+
+	else if (date1.year < date2.year)
+	{
+		totalDifference = (365 - totalDays1) + totalDays2 +
+			(((date1.year - date2.year) - 1) * 365);
+	}
+
+	else
+	{
+			totalDifference = (365 - totalDays2) + totalDays1 +
+			(((date2.year - date1.year) - 1) * 365);	
+	}
+
+
+	cout << "The between date 1 and date 2 is " << totalDifference << endl;
+
+} 
+
+
 }
 
 
