@@ -21,7 +21,12 @@ void FeetInches::simplify()
 		
 		bool marker;
 
-		if ( feet <= right.feet && inches <= right.inches)
+		if (! (feet > right.feet))
+		{
+			marker = true;
+		}
+
+		else if (feet == right.feet && (!(inches > right.inches)))
 		{
 			marker = true;
 		}
@@ -34,15 +39,23 @@ void FeetInches::simplify()
 
 	}
 
-	/*bool FeetInches::operator >= (const FeetInches &right){
+	bool FeetInches::operator >= (const FeetInches &right)
+	{
 
 		bool marker;
 
-		if ( feet >= right.feet && inches >= right.inches){
+		if (!(feet < right.feet))
+		{
 			marker = true;
 		}
 
-		else {
+		else if (feet == right.feet && !(inches < right.inches))
+		{
+			marker = true;
+		}
+
+		else
+		{
 			marker = false;
 		}
 
@@ -50,7 +63,16 @@ void FeetInches::simplify()
 
 	}
 
-	bool FeetInches::operator != (const FeetInches &)
+	bool FeetInches::operator != (const FeetInches &right)
 	{
+		bool marker;
 
-	}*/
+		if (!(feet == right.feet && inches == right.inches))
+		{
+			marker = true;
+		}
+
+		else marker = false;
+
+		return marker;
+	}

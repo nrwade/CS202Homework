@@ -17,35 +17,27 @@ int main(){
 	FeetInches first = FeetInches();
 	FeetInches second = FeetInches();
 
-	first.setFeet(5);
-	first.setInches(0);
+	first.setFeet(3);
+	first.setInches(2);
 
 	second.setFeet(4);
-	second.setInches(10);
+	second.setInches(0);
+
 
 	if (first <= second)
 	{
-		cout << "first is less than or equal to second" << endl;
+		cout << "first is less than or equal to the second" << endl;
 	}
-	else if (second <= first)
-	{
-		cout << "second is less than or equal to first" << endl;
-	}
-
-	/*first.setFeet(5);
-	first.setInches(0);
-
-	second.setFeet(4);
-	second.setInches(10);
 
 	if (first >= second)
 	{
 		cout << "first is greater than or equal to second" << endl;
 	}
-	else if (second >= first)
+
+	if (first != second)
 	{
-		cout << "second is greater than or equal to first" << endl;
-	}*/
+		cout << "the first is not equal to the second" << endl;
+	}
 
 	return 0;
 }

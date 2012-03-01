@@ -42,7 +42,7 @@ public:
 
 	bool operator <= (const FeetInches &);
 	bool operator >= (const FeetInches &);
-	/*bool operator != (const FeetInches &);*/
+	bool operator != (const FeetInches &);
 
 };
 
