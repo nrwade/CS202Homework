@@ -2,12 +2,7 @@
 #define MONTH_H
 
 #include <string>
-#include <iostream>
 using std::string;
-using std::ostream;
-using std::istream;
-using std::cin;
-using std::cout;
 
 
 class Month {

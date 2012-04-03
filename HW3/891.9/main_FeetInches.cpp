@@ -3,6 +3,11 @@ CS202
 1 March 2012
 891.9 */
 
+/*takes two instances of class FeetInches, containing
+feet and inches and compares them using overloaded
+operators. Creates a third instance of FeetInches that
+is identical to the first and displays it*/
+
 #include <iostream>
 #include "FeetInches.h"
 

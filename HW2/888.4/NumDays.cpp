@@ -31,14 +31,14 @@ double NumDays::getHours() {
 // overloads + operator so that when two day values are added,
 // the sum of their hours is returned
 double NumDays::operator+(NumDays n1) {
-	return this->getHours() + n1.getHours();
+	return hours + n1.getHours();
 }
 
 
 // overloads - operator so that when two day values are subtracted,
 // the difference in their hours is returned
 double NumDays::operator-(NumDays n1) {
-	return this->getHours() - n1.getHours();
+	return hours - n1.getHours();
 }
 
 // overloads the ++ operator so that hours is incremented by 1
