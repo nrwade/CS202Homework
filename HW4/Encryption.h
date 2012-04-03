@@ -24,7 +24,7 @@ public:
 		for (int i = 0; i < 26; ++i)
 		{	
 			_alphabet[i] = _alphabet_initializer[i];
-			/* code */
+			
 		}
 
 		_key = n;

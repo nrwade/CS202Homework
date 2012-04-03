@@ -26,10 +26,10 @@ public:
 
 	void doFilter(ifstream &in, ofstream &out)
 	{		
-		int toFilter; //to hold our input
+		string toFilter; //to hold our input
 
 		in >> toFilter; //reading from the file
-/*
+
 		//checking to be sure we haven't reached the end of file
 		while (!in.eof()) 
 		{
@@ -43,7 +43,7 @@ public:
 				//output transformed data to a file	
 				out << toFilter[i];
 			}
-		}*/
+		}
 
 
 	}
