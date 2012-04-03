@@ -12,17 +12,20 @@ double TestScores::avgScores()
 	for (int i = 0; i < _size; i++)
 	{
 
+		// error checks while we sum the scores
 		if (_scores[i] <= 100 && _scores[i] >= 0 )
 		{
-
+			//if value passes error checking, add it to the sum
 			toDivide += _scores[i];
 
 		}
 
-		else {
+		else 
+		{
+			//throwing the exception
 			throw ErrorMessage();
 		}
 	}
-
+		//return the average
 		return (toDivide / _size);
 }

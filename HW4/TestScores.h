@@ -18,6 +18,7 @@ public:
 
 
 	//constructor
+	// sets _size and _scores using user input
 	TestScores(double *scores, int size)
 	{
 		_size = size; 
