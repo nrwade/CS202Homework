@@ -1,18 +1,19 @@
 #include <iostream>
-using namespace std;
-//#include "Encryption.h"
+using std::cout;
+using std::endl;
+
+#include "Encryption.h"
+#include "Filter.h"
+
+
 
 
 int main(int argc, char const *argv[])
-{
-	char a = 'b';
+{	
+	/*ifstream infile;
+  	infile.open ("test.txt", ifstream::in);
+*/
 
-	if (a == 'b') {
-		cout << "a == b" << endl;
-	} else {
-		cout << "wtf\n";
-	}
-	cout << "It works\n";
-	/* code */
+	cout << "It works" << endl;
 	return 0;
 }
