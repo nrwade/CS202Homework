@@ -7,6 +7,9 @@
 #include <ostream>
 #include <string>
 
+#include <iostream>
+using std::cout;
+using std::endl;
 #include <fstream>
 
 using std::string;
@@ -27,24 +30,27 @@ public:
 	void doFilter(ifstream &in, ofstream &out)
 	{		
 		string toFilter; //to hold our input
-
-		in >> toFilter; //reading from the file
-
+		
+		//cout << toFilter << endl;
 		//checking to be sure we haven't reached the end of file
-		while (!in.eof()) 
-		{
+		
+		do {
+			in >> toFilter; //reading from the file
 
 			for (int i = 0; i < toFilter.length(); i++)
 			{
 
 				//transform file 1 character at a time
-				transform( toFilter[i] );
+				//savce in c
+				
+				char c = transform( toFilter[i] );
 
-				//output transformed data to a file	
-				out << toFilter[i];
+				//output transformed char to a file	
+				out << c;
 			}
-		}
 
+			//reading the next line from the file
+		} while (!in.eof()) ;
 
 	}
 
