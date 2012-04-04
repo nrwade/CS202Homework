@@ -9,8 +9,12 @@ int Encryption::getIndex(char c)
 
 	for (int i = 0; i < 26; ++i)
 	{
+		//comparing given character to each
+		// character in alphabet array
 		if (_alphabet[i] == c) 
 		{
+			// if character is the same, return index
+			// so we know what letter the char is
 			return i;
 		}
 	}

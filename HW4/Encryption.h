@@ -9,7 +9,10 @@ class Encryption : public Filter
 {
 
 private:
+	//how far we will shift
 	int _key;
+
+	//alphabet to use in our shifting
  	char _alphabet[26];
 
 public: 

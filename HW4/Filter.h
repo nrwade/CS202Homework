@@ -3,15 +3,15 @@
 
 #ifndef FILTER_H
 #define FILTER_H
+
 #include <istream>
 #include <ostream>
 #include <string>
-
+#include <fstream>
 #include <iostream>
+
 using std::cout;
 using std::endl;
-#include <fstream>
-
 using std::string;
 using std::ifstream;
 using std::ofstream;
@@ -25,14 +25,11 @@ public:
 	//default constructor
 	Filter(){};
 
-	//-------should I have another constructor here? what would it take??
 
 	void doFilter(ifstream &in, ofstream &out)
 	{		
 		string toFilter; //to hold our input
 		
-		//cout << toFilter << endl;
-		//checking to be sure we haven't reached the end of file
 		
 		do {
 			in >> toFilter; //reading from the file
@@ -49,7 +46,7 @@ public:
 				out << c;
 			}
 
-			//reading the next line from the file
+			//checking to be sure we haven't reached the end of the file
 		} while (!in.eof()) ;
 
 	}

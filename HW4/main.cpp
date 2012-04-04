@@ -1,3 +1,12 @@
+//Nicole Wade
+//CS202
+// 3 April 2012
+//963-9
+
+// This program encrypts a file,
+// capitalizes all characters in a file,
+// and copies a file
+
 #include <iostream>
 #include <fstream>
 using std::cout;

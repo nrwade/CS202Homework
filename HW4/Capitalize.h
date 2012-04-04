@@ -1,4 +1,5 @@
 //specification file for the Capitalize class
+//Capitalize is derived from class Filter
 #ifndef CAPITALIZE_H
 #define CAPITALIZE_H
 
@@ -12,6 +13,7 @@ public:
 	//default constructor
 	Capitalize() : Filter() {};
 
+	//virtual function to be overriden
 	virtual char transform(char ch);
 
 };
